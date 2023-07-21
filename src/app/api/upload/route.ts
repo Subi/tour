@@ -2,12 +2,9 @@ import { File } from "buffer";
 import { NextRequest, NextResponse } from "next/server";
 import {v2 as Cloudinary, UploadApiErrorResponse, UploadApiResponse, UploadStream} from 'cloudinary';
 import { Readable } from "stream";
-import { read } from "fs";
-import { scale } from "@cloudinary/url-gen/actions/resize";
-import { max } from "@cloudinary/url-gen/actions/roundCorners";
-import { test } from "node:test";
+import {prisma } from "@/lib/prisma";
 
-let cloudinary =  Cloudinary;
+let cloudinary = Cloudinary;
           
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME, 
@@ -17,14 +14,16 @@ cloudinary.config({
 
 
 interface Patch {
-    state: string | undefined;
+    state: string | undefined
     date: string;
-    imageUrl: string | undefined;
+    imageUrl?: string
     isApproved: boolean;
 }
 
 export async function POST(req: NextRequest, res:NextResponse) {
-
+    console.log(process.env.CLOUD_NAME)
+    console.log(process.env.API_KEY)
+    console.log(process.env.API_SECRET)
     const form:FormData = await req.formData()
     const state:FormDataEntryValue | null =  form.get("state");
     const file:FormDataEntryValue | null = form.get('file')
@@ -32,11 +31,22 @@ export async function POST(req: NextRequest, res:NextResponse) {
 
     const patch:Patch = await createPatchData(state?.toString(),file,date.toString())
 
-    
+    const savedPatch = await prisma.patch.create({
+        data: {
+            state: patch.state,
+            date: patch.date,
+            image_url: patch.imageUrl,
+            isApproved: patch.isApproved
+        }
+    }) 
+
+    if(savedPatch) {
+        console.log("Patch has been successfully uploaded")
+    }
 }
 
 
-const createPatchData = async (state: string | undefined , file: FormDataEntryValue | null , date: string , ):Promise<Patch> => {
+const createPatchData = async (state: string | undefined, file: FormDataEntryValue | null , date: string , ):Promise<Patch> => {
         const newPatch: Patch = {
             state: state,
             date: date,
