@@ -1,0 +1,95 @@
+.uploadContainer {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.uploadFormContainer {
+    margin-top: 100px;
+    width: 38%;
+    height: 55%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+}
+
+.uploadFormHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: black;
+    text-align: left;
+    padding: 40px 0 45px 40px;
+    font-size: 18px;
+}
+
+.uploadFileContainer {
+    width: 75%;
+    margin: 0 auto;
+    padding: 50px;
+    border: 2px dashed rgba(153, 153, 153 , .15);
+    color: black;
+    text-align: center;
+}
+
+.uploadFileImage {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.stateDropdown {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+    background-color: #fff;
+    color: black;
+    width: 25%;
+    margin-left: 80px;
+    font-size: 14px;
+    padding: 10px 0 7px 2px
+}
+
+.submitContainer {
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90
+}
+
+.rightSideSubmitContent {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.socialButton {
+    background-color: #242323;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 33%;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.cancelButton {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #000;
+    width: 33%;
+    padding: 8px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+/* .overlay {
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+
+} */

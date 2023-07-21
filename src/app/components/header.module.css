@@ -1,0 +1,39 @@
+.headerContainer {
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 16px;
+    padding: 20px 0;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(243, 242, 242);
+}
+
+.headerLogo{
+    width: 17%;
+    text-align: center;
+}
+
+.rightHeaderContent  {
+    width: 17%;
+    text-align: center;
+}
+
+.rightHeaderContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.socialButton {
+    background-color: #242323;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 44%;
+    padding: 8px;
+    font-size: 12px;
+}
