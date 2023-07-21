@@ -10,9 +10,9 @@ import { test } from "node:test";
 let cloudinary =  Cloudinary;
           
 cloudinary.config({ 
-  cloud_name: 'dw1c8fbt9', 
-  api_key: '139651378142999', 
-  api_secret: 'yh9XSnMlnkl0Mbf_mFGZvNDupQE' 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
 });
 
 
