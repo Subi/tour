@@ -21,9 +21,6 @@ interface Patch {
 }
 
 export async function POST(req: NextRequest, res:NextResponse) {
-    console.log(process.env.CLOUD_NAME)
-    console.log(process.env.API_KEY)
-    console.log(process.env.API_SECRET)
     const form:FormData = await req.formData()
     const state:FormDataEntryValue | null =  form.get("state");
     const file:FormDataEntryValue | null = form.get('file')

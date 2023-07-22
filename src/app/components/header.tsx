@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <div className={classes.headerContainer}>
             <div className={classes.headerLogo}>
-                <h2>50 States Tour</h2>
+                <Link href={"/"}><h2>50 States Tour</h2></Link>
             </div>
             <div className={classes.rightHeaderContent}>
                 <Link href={"/about"}>About</Link>
