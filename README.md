@@ -9,9 +9,9 @@
 - [x] Setup Upload API Route
 
 - [x] Determine how uploaded photos will be stored
-      - Mongo DB 
-      - MySQL
-      - PosgreSQL
+     - Redis 🟥
+     - Firebase 🔥  ✔
+     - Mongodb  🟩 
 
 - [x] Setup database Prisma [A lot of reading will be needed ]
 
@@ -23,4 +23,4 @@
        - Dashboard route on site ?
        - Discord integration ? 
     
-- [] Display all approved patches
+- [x] Display all approved patches

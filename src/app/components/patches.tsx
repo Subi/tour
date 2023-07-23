@@ -1,9 +1,6 @@
-
 import { ReactNode, useEffect, useState } from 'react';
 import classes from './/patches.module.css';
-import testPatch  from '../../../public/patch-removebg.png';
 import { StaticImageData } from 'next/image';
-import { prisma } from '@/lib/prisma';
 
 async function fetchPatchData():Promise<any> {
     const response =  await fetch('api/database/patches')
@@ -15,16 +12,12 @@ async function fetchPatchData():Promise<any> {
 }
 
 export default function Patches() {
-
     const [patches , setPatches] = useState<StaticImageData[]>([])
 
     const generatePatches = async ():Promise<void> => {
         const data = await fetchPatchData()
         setPatches(data)
     }
-
-    console.log(patches)
-
     useEffect(() => {
         generatePatches()
     } , [])

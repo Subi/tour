@@ -1,12 +1,10 @@
-"use client";
+'use client';
 import Header from '../components/header';
 import classes from './upload.module.css';
 import Image from 'next/image';
 import Folder from '../../../public/folder.svg'
-import { ChangeEvent, FC, ReactComponentElement, useState } from 'react';
-
+import { useState } from 'react';
 export default function Upload(){
-    
     const [selectedState , setSelectedState] = useState('')
     const [uploadedFile , setUploadedFile] = useState<Blob | undefined>(undefined)
     
