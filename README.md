@@ -17,10 +17,16 @@
 
 - [] Create tables and setup and relations between [Patches -> <- User] 
 
-- [] Sign in feature using discord for security reasons and accountability behind post
+- [x] Sign in feature using discord for security reasons and accountability behind post
 
 - [] Create Dashboard for me to see and approve photos submitted  
        - Dashboard route on site ?
-       - Discord integration ? 
+       - Discord integration ✔
     
 - [x] Display all approved patches
+
+- [] Only allow signed in users to submit photos
+
+- [] Display preview of uploaded photo before submission
+
+- [] Do some testing on optimal W x H of photo for best resolution 
