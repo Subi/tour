@@ -21,6 +21,7 @@
 
 - [] Create Dashboard for me to see and approve photos submitted  
        - Dashboard route on site ?
+       
        - Discord integration ✔
     
 - [x] Display all approved patches
