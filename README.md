@@ -9,8 +9,8 @@
 - [x] Setup Upload API Route
 
 - [x] Determine how uploaded photos will be stored
-     - Redis 🟥
-     - Firebase 🔥  ✔
+     - PostgreSql 🐘️ ✔
+     - Firebase 🔥  
      - Mongodb  🟩 
 
 - [x] Setup database Prisma [A lot of reading will be needed ]
