@@ -15,7 +15,7 @@
 
 - [x] Setup database Prisma [A lot of reading will be needed ]
 
-- [] Create tables and setup and relations between [Patches -> <- User] 
+- [x] Create tables and setup and relations between [Patches -> <- User] 
 
 - [x] Sign in feature using discord for security reasons and accountability behind post
 
@@ -29,4 +29,4 @@
 
 - [] Display preview of uploaded photo before submission
 
-- [] Do some testing on optimal W x H of photo for best resolution 
+- [] Do some testing on optimal photo resolution. 

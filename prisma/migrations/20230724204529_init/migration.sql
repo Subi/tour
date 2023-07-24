@@ -13,8 +13,9 @@ CREATE TABLE "Patch" (
 -- CreateTable
 CREATE TABLE "Author" (
     "id" SERIAL NOT NULL,
-    "username" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
+    "username" TEXT,
+    "email" TEXT,
+    "isBanned" BOOLEAN NOT NULL,
 
     CONSTRAINT "Author_pkey" PRIMARY KEY ("id")
 );

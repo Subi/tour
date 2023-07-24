@@ -21,6 +21,7 @@ interface Patch {
     Author: {
         username: string | undefined
         email: string | undefined
+        isBanned: boolean
     }
 }
 
@@ -47,7 +48,8 @@ const createPatchData = async (state: string | undefined, file: FormDataEntryVal
             isApproved: false,
             Author: {
                 username: username,
-                email: email
+                email: email,
+                isBanned: false
             }
         }     
 }
@@ -95,6 +97,7 @@ const savePatch = async (patch:Patch):Promise<any> => {
                 create: {
                     username: patch.Author.username,
                     email: patch.Author.email,
+                    isBanned: patch.Author.isBanned
                 }
             }
         }
