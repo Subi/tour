@@ -10,14 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Patch {
-  id Int @id @default(autoincrement())
-  state String?
-  date String
-  image_url String?
+  id         Int     @id @default(autoincrement())
+  state      String?
+  date       String
+  image_url  String?
   isApproved Boolean
-  Author String?
+  Author     Author  @relation(fields: [authorId], references: [id])
+  authorId   Int
+}
+
+model Author {
+  id       Int     @id @default(autoincrement())
+  username String?
+  email    String?
+  Patch    Patch[]
 }
 
 // Add Author model and relations to Patch table

@@ -18,41 +18,38 @@ interface Patch {
     date: string;
     imageUrl?: string
     isApproved: boolean;
+    Author: {
+        username: string | undefined
+        email: string | undefined
+    }
 }
 
 export async function POST(req: NextRequest, res:NextResponse) {
     const form:FormData = await req.formData()
+    
     const state:FormDataEntryValue | null =  form.get("state");
     const file:FormDataEntryValue | null = form.get('file')
-    const date = Date()
+    const username: FormDataEntryValue | null = form.get('username');
+    const email: FormDataEntryValue | null = form.get('email')
+    const date = Date() 
 
-    const patch:Patch = await createPatchData(state?.toString(),file,date.toString())
+    const patch:Patch = await createPatchData(state?.toString(),file,date.toString() , username?.toString() , email?.toString())
+    console.log(savePatch(patch))
 
-    const savedPatch = await prisma.patch.create({
-        data: {
-            state: patch.state,
-            date: patch.date,
-            image_url: patch.imageUrl,
-            isApproved: patch.isApproved
-        }
-    }) 
-
-    if(savedPatch) {
-        console.log("Patch has been successfully uploaded")
-    }
 }
 
 
-const createPatchData = async (state: string | undefined, file: FormDataEntryValue | null , date: string , ):Promise<Patch> => {
-        const newPatch: Patch = {
+const createPatchData = async (state: string | undefined, file: FormDataEntryValue | null , date: string , username: string | undefined, email: string | undefined  ):Promise<Patch> => {
+        return {
             state: state,
             date: date,
             imageUrl: await generatePatchImageUrl(file),
-            isApproved: false
-        } 
-        
-        return newPatch
-    
+            isApproved: false,
+            Author: {
+                username: username,
+                email: email
+            }
+        }     
 }
 
 
@@ -73,8 +70,6 @@ const generatePatchImageUrl = async (file: FormDataEntryValue | null):Promise<st
     })
 }
 
-
-
 const fileToBuffer = async (file: FormDataEntryValue | null):Promise<Readable> => {
     let newFile = file as Blob
     const buffer: ArrayBuffer = Buffer.from(await newFile.arrayBuffer())
@@ -87,4 +82,22 @@ const fileToBuffer = async (file: FormDataEntryValue | null):Promise<Readable> =
     
     })
     return readable
+}
+
+const savePatch = async (patch:Patch):Promise<any> => {
+    const savedPatch = await prisma.patch.create({
+        data: {
+            state: patch.state,
+            date: patch.date,
+            image_url: patch.imageUrl,
+            isApproved: patch.isApproved,
+            Author: {
+                create: {
+                    username: patch.Author.username,
+                    email: patch.Author.email,
+                }
+            }
+        }
+    })
+    return savedPatch
 }

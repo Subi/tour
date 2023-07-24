@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/react'
 import classes from './header.module.css'
 
 
-interface IProfileProps {
+export interface IProfileProps {
     user?: {
         name?: string | null
         email?: string | null

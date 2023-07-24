@@ -7,9 +7,9 @@
 }
 
 .uploadFormContainer {
-    margin-top: 100px;
+    margin-top: 50px;
     width: 38%;
-    height: 55%;
+    height: 600px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 10px;
 }
@@ -25,20 +25,28 @@
 }
 
 .uploadFileContainer {
-    width: 75%;
+    width: 66%;
+    height: 325px;
     margin: 0 auto;
     padding: 50px;
     border: 2px dashed rgba(153, 153, 153 , .15);
     color: black;
     text-align: center;
+    display: grid;
+    align-items: center;
 }
 
 .uploadFileImage {
-    margin-top: 10px;
+    margin-top: auto 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
+}
+
+.filePropertiesContainer {
+    display: flex;
+    margin: 0 auto;
+    width: 66%;
 }
 
 .stateDropdown {
@@ -52,11 +60,12 @@
     padding: 10px 0 7px 2px
 }
 
+
 .submitContainer {
-    margin: 50px auto;
+    margin: 70px auto;
     display: flex;
     justify-content: space-between;
-    width: 90
+    width: 90%;
 }
 
 .rightSideSubmitContent {

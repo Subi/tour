@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import classes from './header.module.css'
-import { signIn } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { DefaultUser, Session } from 'next-auth'
+import {DefaultSession, Session} from 'next-auth'
 import Profile from './profile'
-import { JsxElement } from 'typescript'
-
+import { IProfileProps } from './profile'
 
 
 async function getSession() {

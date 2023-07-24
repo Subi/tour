@@ -21,12 +21,11 @@
 
 - [] Create Dashboard for me to see and approve photos submitted  
        - Dashboard route on site ?
-       
        - Discord integration ✔
     
 - [x] Display all approved patches
 
-- [] Only allow signed in users to submit photos
+- [x] Only allow signed in users to submit photos
 
 - [] Display preview of uploaded photo before submission
 
