@@ -27,6 +27,6 @@
 
 - [x] Only allow signed in users to submit photos
 
-- [] Display preview of uploaded photo before submission
+- [x] Display preview of uploaded photo before submission
 
 - [] Do some testing on optimal photo resolution. 

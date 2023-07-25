@@ -5,12 +5,17 @@ import Image from 'next/image';
 import Folder from '../../../public/folder.svg'
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { preview } from '@cloudinary/url-gen/actions/videoEdit';
+
+
+
+
 export default function Upload(){
     const {data: session} = useSession()
 
     const [selectedState , setSelectedState] = useState('')
-    const [uploadedFile , setUploadedFile] = useState<Blob | undefined>(undefined)
-    const [previewFile , setPreviewFile] = useState<string>("");
+    const [uploadedFile , setUploadedFile] = useState<Blob>()
+    const [previewFile , setPreviewFile] = useState<string>();
 
 
     const uploadFile = async ():  Promise<void> => {
@@ -41,6 +46,13 @@ export default function Upload(){
     const openFile = ():void => {
         document.getElementById('file_upload')?.click()
     }
+    
+
+    const uploadFileHandler = (target:EventTarget & HTMLInputElement) => {
+        const blob =  target.files?.[0] as Blob
+        setUploadedFile(blob)
+        setPreviewFile(URL.createObjectURL(blob)) 
+    }
 
     return (
         <>
@@ -50,10 +62,12 @@ export default function Upload(){
                 <div className={classes.uploadFormHeader}>
                     <h3>Upload File</h3>
                 </div>
-                <div className={classes.uploadFileContainer}>
+                <div className={classes.uploadFileContainer} onClick={() => {openFile()}}>
                     <div className={classes.uploadFileImage}>
-                    <Image alt={"upload photo"} src={Folder} width={70} height={70} onClick={() => {openFile()}}/>
-                    <input type='file' id='file_upload' hidden={true} onChange={(e) => {setUploadedFile(e.target.files?.[0])}}/>
+                    {!previewFile  ? <Image alt={"upload photo"} src={Folder} width={70} height={70} /> 
+                        : <Image alt='preview photo' src={previewFile as string} width={225} height={225}/>
+                     }
+                    <input type='file' id='file_upload' hidden={true} onChange={(e) => {uploadFileHandler(e.target)}}/>
                     </div>
                     <p>Choose a <u><b>File</b></u> to upload</p>
                 </div>
