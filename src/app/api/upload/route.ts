@@ -94,25 +94,30 @@ const fileToBuffer = async (file: FormDataEntryValue | null):Promise<Readable> =
     return readable
 }
 
-const savePatch = async (patch:Patch):Promise<any> => {
 
-    
-    // return await prisma.patch.create({
-    //     data: {
-    //         state: patch.state,
-    //         date: patch.date,
-    //         imageUrl: patch.imageUrl,
-    //         isApproved: patch.isApproved,
-    //         Author: {
-    //             create: {
-    //                 username: patch.Author.username,
-    //                 email: patch.Author.email,
-    //                 isBanned: patch.Author.isBanned
-    //             }
-    //         },
-    //     },
-    //     include: {
-    //         Author: true
-    //     }
-    // })
+
+const savePatch = async (patch:Patch):Promise<any> => {
+    return await prisma.patch.create({
+        data: {
+            state: patch.state,
+            date: patch.date,
+            imageUrl: patch.imageUrl,
+            isApproved: patch.isApproved,
+            Author: {
+                connectOrCreate: {
+                    where: {
+                        username: patch.Author.username
+                    },
+                    create: {
+                        username: patch.Author.username,
+                        email: patch.Author.email,
+                        isBanned: patch.Author.isBanned
+                    }
+                },
+            },
+        },
+        include : {
+            Author : true
+        }
+    })
 }

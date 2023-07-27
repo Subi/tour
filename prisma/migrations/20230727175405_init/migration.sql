@@ -20,5 +20,8 @@ CREATE TABLE "Author" (
     CONSTRAINT "Author_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Author_username_key" ON "Author"("username");
+
 -- AddForeignKey
 ALTER TABLE "Patch" ADD CONSTRAINT "Patch_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "Author"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
