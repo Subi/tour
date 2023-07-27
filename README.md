@@ -33,4 +33,4 @@
 
 - [] Add discord bot to server to allow automated approval through submission reactions
 
-- [] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️
+- [x] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️

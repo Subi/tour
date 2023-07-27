@@ -84,14 +84,13 @@ const fileToBuffer = async (file: FormDataEntryValue | null):Promise<Readable> =
     let newFile = file as Blob
     const buffer: ArrayBuffer = Buffer.from(await newFile.arrayBuffer())
 
-    const readable = new Readable({
+    return new Readable({
         read() {
             this.push(buffer)
             this.push(null)
         }
     
     })
-    return readable
 }
 
 

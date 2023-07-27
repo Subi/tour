@@ -1,0 +1,59 @@
+
+.dashboardHeader {
+    width: 55%;
+    display: flex;
+    margin:  0 auto;
+    margin-top: 125px;
+}
+
+.dashboardHeader h2 {
+    font-size: 30px;
+}
+
+
+.photoCardsContainer {
+    width: 58%;
+    display: grid;
+    grid-template-columns: repeat(4, 30%);
+    place-items: center;
+    margin: 0 auto;
+    margin-top: 85px;
+    margin-bottom: 100px;
+}
+
+.photoCardContainer {
+    height: 390px;
+    width: 295px;
+    border: 1px solid rgba(255 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.photoCardImageContainer {
+    width: 100%;
+    height: 80%;;
+}
+
+.photoCardImage {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.photoCardInfoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 25px
+}
+
+.controlsContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}

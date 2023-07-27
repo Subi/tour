@@ -52,7 +52,6 @@ export async function handler(patch:Patch) { // Need to think of a name for this
     } else {
         console.log( response.status , "Success patch data has been sent to server")
     }
-    
 }
 
 

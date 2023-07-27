@@ -38,8 +38,6 @@ export default function Upload(){
         })
     }
 
-
-
     const states:string[] = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
     const openFile = ():void => {
@@ -80,7 +78,7 @@ export default function Upload(){
                     })}
                 </select>
                     <div className={classes.rightSideSubmitContent}>
-                    <button className={classes.cancelButton}>Cancel</button>
+                    <button className={classes.cancelButton} onClick={() => setPreviewFile("")}>Cancel</button>
                     <button className={classes.socialButton} onClick={() => {uploadFile()}}>Upload</button>
                     </div>
                 </div>

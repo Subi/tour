@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import classes from './/patches.module.css';
 import { StaticImageData } from 'next/image';
+ 
 
 async function fetchPatchData():Promise<any> {
     const response =  await fetch('api/database/patches')
