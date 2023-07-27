@@ -1,10 +1,8 @@
 import Link from 'next/link'
 import classes from './header.module.css'
 import { useEffect, useState } from 'react'
-import {DefaultSession, Session} from 'next-auth'
+import {Session} from 'next-auth'
 import Profile from './profile'
-import { IProfileProps } from './profile'
-
 
 async function getSession() {
     const response = await fetch('api/session')

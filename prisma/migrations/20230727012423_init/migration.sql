@@ -3,7 +3,7 @@ CREATE TABLE "Patch" (
     "id" SERIAL NOT NULL,
     "state" TEXT,
     "date" TEXT NOT NULL,
-    "image_url" TEXT,
+    "imageUrl" TEXT,
     "isApproved" BOOLEAN NOT NULL,
     "authorId" INTEGER NOT NULL,
 

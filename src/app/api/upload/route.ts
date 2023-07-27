@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {v2 as Cloudinary, UploadApiErrorResponse, UploadApiResponse, UploadStream} from 'cloudinary';
 import { Readable } from "stream";
 import {prisma } from "@/lib/prisma";
+import { handler } from "../discord/route";
 
 let cloudinary = Cloudinary;
           
@@ -13,7 +14,8 @@ cloudinary.config({
 });
 
 
-interface Patch {
+export interface Patch {
+    id: number | null
     state: string | undefined
     date: string;
     imageUrl?: string
@@ -32,16 +34,22 @@ export async function POST(req: NextRequest, res:NextResponse) {
     const file:FormDataEntryValue | null = form.get('file')
     const username: FormDataEntryValue | null = form.get('username');
     const email: FormDataEntryValue | null = form.get('email')
-    const date = Date() 
+    const date = new Date()
 
-    const patch:Patch = await createPatchData(state?.toString(),file,date.toString() , username?.toString() , email?.toString())
-    console.log(savePatch(patch))
 
+    const patch:Patch = await createPatchData(state?.toString(), file, date.toLocaleDateString() , username?.toString() , email?.toString())
+    if(patch) {
+        const savedPatch:Patch = await savePatch(patch)
+        handler(savedPatch)
+    } else {
+        console.error("Error creating patch data from upload form.")
+    }
 }
 
 
 const createPatchData = async (state: string | undefined, file: FormDataEntryValue | null , date: string , username: string | undefined, email: string | undefined  ):Promise<Patch> => {
         return {
+            id: null,
             state: state,
             date: date,
             imageUrl: await generatePatchImageUrl(file),
@@ -49,7 +57,7 @@ const createPatchData = async (state: string | undefined, file: FormDataEntryVal
             Author: {
                 username: username,
                 email: email,
-                isBanned: false
+                isBanned: false,
             }
         }     
 }
@@ -87,20 +95,24 @@ const fileToBuffer = async (file: FormDataEntryValue | null):Promise<Readable> =
 }
 
 const savePatch = async (patch:Patch):Promise<any> => {
-    const savedPatch = await prisma.patch.create({
-        data: {
-            state: patch.state,
-            date: patch.date,
-            image_url: patch.imageUrl,
-            isApproved: patch.isApproved,
-            Author: {
-                create: {
-                    username: patch.Author.username,
-                    email: patch.Author.email,
-                    isBanned: patch.Author.isBanned
-                }
-            }
-        }
-    })
-    return savedPatch
+
+    
+    // return await prisma.patch.create({
+    //     data: {
+    //         state: patch.state,
+    //         date: patch.date,
+    //         imageUrl: patch.imageUrl,
+    //         isApproved: patch.isApproved,
+    //         Author: {
+    //             create: {
+    //                 username: patch.Author.username,
+    //                 email: patch.Author.email,
+    //                 isBanned: patch.Author.isBanned
+    //             }
+    //         },
+    //     },
+    //     include: {
+    //         Author: true
+    //     }
+    // })
 }

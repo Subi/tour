@@ -3,9 +3,8 @@ import Header from '../components/header';
 import classes from './upload.module.css';
 import Image from 'next/image';
 import Folder from '../../../public/folder.svg'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { preview } from '@cloudinary/url-gen/actions/videoEdit';
 
 
 

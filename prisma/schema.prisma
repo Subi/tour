@@ -14,7 +14,7 @@ model Patch {
   id         Int     @id @default(autoincrement())
   state      String?
   date       String
-  image_url  String?
+  imageUrl  String?
   isApproved Boolean
   Author     Author  @relation(fields: [authorId], references: [id])
   authorId   Int

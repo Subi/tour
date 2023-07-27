@@ -19,9 +19,9 @@
 
 - [x] Sign in feature using discord for security reasons and accountability behind post
 
-- [] Create Dashboard for me to see and approve photos submitted  
-       - Dashboard route on site ?
-       - Discord integration ✔
+- [x] Create Dashboard for me to see and approve photos submitted  
+      - Dashboard route on site ?
+      - Discord integration ✔
     
 - [x] Display all approved patches
 
@@ -30,3 +30,7 @@
 - [x] Display preview of uploaded photo before submission
 
 - [] Do some testing on optimal photo resolution. 
+
+- [] Add discord bot to server to allow automated approval through submission reactions
+
+- [] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️
