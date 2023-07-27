@@ -20,7 +20,7 @@
 - [x] Sign in feature using discord for security reasons and accountability behind post
 
 - [x] Create Dashboard for me to see and approve photos submitted  
-      - Dashboard route on site ?
+      - Dashboard route on site 
       - Discord integration ✔
     
 - [x] Display all approved patches
