@@ -37,4 +37,6 @@
 
 - [] Create password page to protect dashboard
 
+- [] Update Design * weekend task * 🥵️
+
 - [x] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️
