@@ -33,4 +33,8 @@
 
 - [] Add discord bot to server to allow automated approval through submission reactions
 
+- [] Build out dashboard to approve/decline submitted photos. 
+
+- [] Create password page to protect dashboard
+
 - [x] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️
