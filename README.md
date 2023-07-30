@@ -31,12 +31,10 @@
 
 - [] Do some testing on optimal photo resolution. 
 
-- [] Add discord bot to server to allow automated approval through submission reactions
+- [x] Build out dashboard to approve/decline submitted photos. 
 
-- [] Build out dashboard to approve/decline submitted photos. 
+- [x] Create password page to protect dashboard
 
-- [] Create password page to protect dashboard
-
-- [] Update Design * weekend task * 🥵️
+- [] Update Design * ~~ weekend task ~~ Sunday* 🥵️ 
 
 - [x] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️

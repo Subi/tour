@@ -53,7 +53,7 @@ export default function Upload(){
 
     return (
         <>
-        <Header />
+        <Header {...session}/>
         <div className={classes.uploadContainer}>
             <div className={classes.uploadFormContainer}>
                 <div className={classes.uploadFormHeader}>

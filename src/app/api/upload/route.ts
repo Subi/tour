@@ -19,7 +19,7 @@ export interface Patch {
     state: string | undefined
     date: string;
     imageUrl?: string
-    isApproved: boolean;
+    isApproved: boolean | null; 
     Author: {
         username: string | undefined
         email: string | undefined
@@ -53,7 +53,7 @@ const createPatchData = async (state: string | undefined, file: FormDataEntryVal
             state: state,
             date: date,
             imageUrl: await generatePatchImageUrl(file),
-            isApproved: false,
+            isApproved: null,
             Author: {
                 username: username,
                 email: email,

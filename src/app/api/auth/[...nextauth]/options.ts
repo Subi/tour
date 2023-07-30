@@ -1,4 +1,5 @@
 import { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from 'next-auth/providers/discord'
 
 export const options: NextAuthOptions = {
@@ -9,6 +10,6 @@ export const options: NextAuthOptions = {
         DiscordProvider({
             clientId: process.env.DISCORD_ID as string,
             clientSecret: process.env.DISCORD_SECRET as string,            
-        })
+        }),
     ]
 }

@@ -1,3 +1,4 @@
+"use client"
 import { DefaultSession, ISODateString, Session } from "next-auth";
 import { signIn } from 'next-auth/react'
 import classes from './header.module.css'

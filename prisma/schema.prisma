@@ -15,7 +15,7 @@ model Patch {
   state      String?
   date       String
   imageUrl  String?
-  isApproved Boolean
+  isApproved Boolean?
   Author     Author  @relation(fields: [authorId], references: [id])
   authorId   Int
 }

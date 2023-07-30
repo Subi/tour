@@ -4,7 +4,7 @@ CREATE TABLE "Patch" (
     "state" TEXT,
     "date" TEXT NOT NULL,
     "imageUrl" TEXT,
-    "isApproved" BOOLEAN NOT NULL,
+    "isApproved" BOOLEAN,
     "authorId" INTEGER NOT NULL,
 
     CONSTRAINT "Patch_pkey" PRIMARY KEY ("id")

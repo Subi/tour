@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode, useEffect, useState } from 'react';
 import classes from './/patches.module.css';
 import { StaticImageData } from 'next/image';
@@ -28,10 +29,9 @@ export default function Patches() {
             <div className={classes.patchesCarousel}>
                 <div className={classes.row6}>
                     {patches.map((patch:any, index:number) => {
-                        console.log(patch)
-                        if(index < 6) {
+                        if(index < 6 && patch.isApproved) {
                             return <div className={classes.patchContainer}>
-                                <img src={patch.image_url} width={160} height={160}/>
+                                <img src={patch.imageUrl} width={160} height={160}/>
                             </div>
                         }
                     })}

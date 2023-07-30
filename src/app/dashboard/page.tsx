@@ -2,49 +2,79 @@
 import Header from "../components/header";
 import classes from './dashboard.module.css';
 import Image from "next/image";
-import example from '../../../public/patch.jpeg';
 import accept from '../../../public/icons8-check.svg';
 import decline from '../../../public/icons8-close-window-48.png';
-import { useEffect, useState } from "react";
 import { Patch } from "../api/upload/route";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import {redirect} from 'next/navigation';
+import { get } from "http";
+
+async function updatePatchData(patch:Patch):Promise<void> {
+        const response =  await fetch('api/database/patches/update' , {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({"data": patch})
+        })
+        if(!response.ok){
+            console.error("Error occured updating patch status" , response.statusText)
+        }
+}
+
+async function deletePatchData(patch:Patch):Promise<void> {
+        const response =  await fetch('api/database/patches/delete' , {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({"data": patch})
+        })
+        if(!response.ok){
+            console.error("Error occured updating patch status" , response.statusText)
+        }
+}
 
 
-
-async function fetchPatchData():Promise<any> {
-    const response =  await fetch('api/database/patches')
+async function getPatchData() {
+    const response = await fetch('api/database/patches')
     if(!response.ok) {
-        console.error("Error fetching patch data:")
+        console.error("Error occured fetching patch data")
     }
-
     return response.json()
 }
 
 
-
-
 export default function Dashboard() {
-    const [data , setData] = useState<Patch[]>([])
+    const {data: session , status} = useSession()
+    const [data , setData] = useState<Patch[]>([]);
 
-
-    const getPatchData = async () => {
-            const results:Patch[] = await fetchPatchData()
-            console.log(results)
-            setData(results)
+    const getData = async () => {
+        const patchData:Patch[] =  await getPatchData()
+        setData(patchData.filter(patch => patch.isApproved === null))
     }
 
-    useEffect(() => {
-        getPatchData()
-    } , [])
+    useEffect(() => { 
+        getData()
+    } , [session])
 
 
-    return (
+    if(status === "loading") return null
+
+    if(session?.user?.email != "negus.dev@gmail.com") {
+        redirect("/")
+    }
+
+
+    return ( 
         <>
-           <Header/>
+           <Header {...session}/>
            <div className={classes.dashboardHeader}>
                 <h2>Dashboard</h2>
            </div>
            <div className={classes.photoCardsContainer}>
-                {data ?   data.map((patch , index) => {
+                {data ?  data.map((patch:Patch , index) => {
                     return (
                         <div className={classes.photoCardContainer}>
                            <div className={classes.photoCardImageContainer}>
@@ -55,8 +85,8 @@ export default function Dashboard() {
                            <div className={classes.photoCardInfoContainer}>
                                <p>{patch.Author.username}</p>
                                <div className={classes.controlsContainer}>
-                                   <Image alt="accept" src={accept} width={25} height={25}/>
-                                   <Image alt="decline" src={decline} width={28} height={28}/>
+                                   <Image alt="accept" src={accept} width={25} height={25} onClick={() => {updatePatchData(patch)}}/>
+                                   <Image alt="decline" src={decline} width={28} height={28} onClick={() => {deletePatchData(patch)}}/>
                                </div>
                            </div>  
                        </div> 

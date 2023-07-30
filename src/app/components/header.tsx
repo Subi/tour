@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import classes from './header.module.css'
-import { useEffect, useState } from 'react'
-import {Session} from 'next-auth'
-import Profile from './profile'
+import { Session, getServerSession } from 'next-auth'
+import Profile, { IProfileProps } from './profile'
 
 async function getSession() {
     const response = await fetch('api/session')
@@ -12,20 +11,7 @@ async function getSession() {
     return response.json()
 }
 
-export default function Header():JSX.Element {
-    const  [session , setSession] = useState<Session>()
-
-
-    const getSessionData = async() => {
-        const  data =  await getSession()
-        setSession(data.session)
-    }
-
-    useEffect(() => {
-        getSessionData()
-    }, [])
-
-
+export default function Header(props: IProfileProps){
     return (
         <>
          <div className={classes.headerContainer}>
@@ -35,7 +21,7 @@ export default function Header():JSX.Element {
             <div className={classes.rightHeaderContent}>
                 <Link href={"/about"}>About</Link>
                 <Link href={"/upload"}>Upload</Link>
-                <Profile {...session}/>
+                <Profile {...props}/>
             </div>
         </div>
         </>

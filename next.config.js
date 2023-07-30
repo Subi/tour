@@ -4,11 +4,12 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'res.cloudinary.com',
+                hostname:  "res.cloudinary.com",
                 port: '',
                 pathname: '/dashboard/**'
             }
-        ]
+        ],
+        domains: ["res.cloudinary.com"]
     }
 }
 
