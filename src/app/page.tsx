@@ -1,4 +1,5 @@
 import Header from './components/header'
+import styles from  './main.module.css'
 import Patches from './components/patches'
 import { getServerSession } from 'next-auth'
 
@@ -9,8 +10,11 @@ export default async function Home() {
 
   return (
     <>
-     <Header {...session}/>
-     <Patches/>
+    <main id={styles.mainWrapper}>
+      
+    </main>
+     {/* <Header {...session}/>
+     <Patches/> */}
     </>
   )
 }

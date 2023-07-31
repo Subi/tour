@@ -1,3 +1,13 @@
+## Design To-do List
+
+
+- [] Add a landing page with CSS transitions
+
+- [] Change out Typography.
+
+- [] Update Nav bar.
+
+
 ## To-do List
 
 - [x] Create navigation links.
