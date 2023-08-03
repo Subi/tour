@@ -1,19 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter , Roboto , Montserrat} from 'next/font/google'
+import { Inter,  Press_Start_2P , Montserrat } from 'next/font/google'
 import { NextAuthProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const roboto = Roboto ({
-  weight: ['400' , '700'],
-  subsets: ['latin']
-})
-
-export const monstserrat =  Montserrat({
-  subsets: ['latin'],
-  weight: ['200' , '300' , '500']
-})
+const pressStart =  Press_Start_2P({ subsets: ["latin"] , weight: "400" , variable: '--font-press-start'})
+const montserrat =  Montserrat({subsets: ["latin"] , weight: ["400" , "500" ] , variable: '--font-montserrat'})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -26,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${pressStart.variable} ${montserrat.variable}`}>
       <body className={inter.className}>
         <NextAuthProvider>{children}</NextAuthProvider>
         </body>

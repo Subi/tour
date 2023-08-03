@@ -1,0 +1,47 @@
+#patchCardContainer {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profileCard {
+    align-items: center;
+    width: 245px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 12px 50px 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(204,36,52 , .1)
+}
+
+.emptyCard {
+    justify-content: center;
+    align-items: center;
+    width: 245px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 12px 50px 12px;
+    border-radius: 20px;
+    border: 3px dashed rgba(204,36,52 , .1)
+}
+
+
+.cardHeader {
+    font-family: var(--font-montserrat);
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    width: 90%;
+    color: rgba(0,0,0,.9);
+    justify-content: space-between;
+    margin: 30px 0 5px 0;
+}
+
+.cardHeader p:first-child {
+    font-family: var(--font-press-start);
+    padding-left: 5px;
+}

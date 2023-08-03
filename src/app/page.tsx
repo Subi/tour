@@ -1,20 +1,18 @@
 import Header from './components/header'
-import styles from  './main.module.css'
+import LandingPage from './components/landingPage'
+import VideoReel from './components/videoReel'
 import Patches from './components/patches'
 import { getServerSession } from 'next-auth'
-
-
 
 export default async function Home() {
   const session =  await getServerSession()
 
   return (
     <>
-    <main id={styles.mainWrapper}>
-      
-    </main>
-     {/* <Header {...session}/>
-     <Patches/> */}
+    {/* <LandingPage/> */}
+      <Header {...session}/>
+      <VideoReel/>
+     {/* <Patches/> */}
     </>
   )
 }

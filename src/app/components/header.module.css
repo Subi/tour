@@ -1,48 +1,96 @@
-.headerContainer {
-    background-color: #fff;
-    color: rgb(0, 0, 0);
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 16px;
-    padding: 20px 0;
-    align-items: center;
+#header {
+    width: 80%;
     margin: 0 auto;
-    border-bottom: 1px solid rgb(243, 242, 242);
-}
-
-
-.headerLogo{
-    width: 18%;
-    text-align: center;
-}
-
-.rightHeaderContent  {
-    width: 18%;
-    text-align: center;
-}
-
-.rightHeaderContent {
+    /* background-color: #f5f5f5; */
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    margin-bottom: 150px;
+}
+
+#headerName {
+    font-family: var(--font-press-start);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+
+#headerLogo {
+    display: flex;
+    align-items: center;
+    width: 8%;
+    justify-content: center;
+}
+
+.headerLeft {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerRight {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerNav {
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    font-size: 16px;
+    width: 40%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.myLink {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.myLink::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgb(251,211,20);
+    transition: width .3s;
+}
+
+.myLink:hover::after{
+    width: 100%;
 }
 
 
 .profileContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 30%
 }
 
-.profileContainer > img {
-    width: 32px;
-    height: 32px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    margin-left: 20px;
+.discordButton {
+    background-color: #242323;
+    border:none;
+    color: white;
+    padding: 8px;
+    font-family: var(--font-press-start);
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+    width: 60%;
+    margin-bottom: 24px;
+    outline: none;
+    box-shadow: 0 4px #999;
 }
 
+.discordButton:active {
+    background-color: #eb1c2c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 
 .socialButton {
     background-color: #242323;

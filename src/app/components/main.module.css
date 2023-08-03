@@ -1,0 +1,27 @@
+#mainWrapper {
+    height: 100vh;
+    background-color: #F5F5F5;
+    font-family: var(--font-press-start);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+#mainWrapper h1 {
+    color: rgb(251,211,20);
+    margin-bottom: 50px;
+}
+
+.test {
+    color: blue;
+}
+
+#mainWrapper p {
+    cursor: pointer;
+    color:rgb(212,66,15)
+}
+
+
+
