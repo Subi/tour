@@ -1,31 +1,30 @@
 "use client"
-import { DefaultSession, ISODateString, Session } from "next-auth";
 import { signIn } from 'next-auth/react'
 import classes from './header.module.css'
 
 
 export interface IProfileProps {
+    expires?: string | undefined
     user?: {
-        name?: string | null
-        email?: string | null
-        image?: string | null
+        name?: string | null | undefined
+        email?: string | null | undefined
+        image?: string | null | undefined
       }
 }
 
-
-export default function Profile(props: IProfileProps) {
-    if(!props.user) {
+export default function Profile({user}: IProfileProps) {
+    if(!user) {
         return (
-            <button onClick={() => signIn("discord")} className={classes.socialButton}>
+            <button onClick={() => signIn("discord")} className={classes.discordButton}>
                     <i></i>
-                    Login with Discord
+                    Login
              </button>
         )
     }
     return (
-        <span className={classes.profileContainer}>
-                    {props?.user?.name}
-                    <img src={props?.user?.image as string}/>
+        <span>
+                    {user.name}
+                    <img src={user.image as string}/>
         </span>
     )
 

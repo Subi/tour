@@ -1,8 +1,10 @@
 'use client';
 import Header from '../components/header';
-import classes from './upload.module.css';
+import styles from './upload.module.css';
+
 import Image from 'next/image';
 import Folder from '../../../public/folder.svg'
+import gif from '../../../public/upload.gif'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 
@@ -53,8 +55,32 @@ export default function Upload(){
 
     return (
         <>
-        <Header {...session}/>
-        <div className={classes.uploadContainer}>
+        <div id={styles.wrapper}>
+        <div id={styles.overlay}>
+            <div className={styles.uploadDialog}>
+                <div className={styles.uploadArea}>
+                    <div className={styles.imageAreaContainer}>
+                    <Image alt='upload gif' src={gif} layout='fill'/>
+                    </div>
+                </div>
+                <div className={styles.uploadActionContainer}>
+                    <div className={styles.uploadActionHeader}>
+                        <p>Choose a photo</p>
+                    </div>
+                    <div className={styles.actionButtonsContainer}>
+                    <select name='states'className={styles.stateDropdown} onChange={(e) => {setSelectedState(e.target.value)}}>
+                    <option>Select a state</option>
+                    {states.map((state , i) => {
+                        return <option key={i}value={state}>{state}</option>
+                    })}
+                    </select>
+                        <button className={styles.uploadButton}>Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {/* <div className={classes.uploadContainer}>
             <div className={classes.uploadFormContainer}>
                 <div className={classes.uploadFormHeader}>
                     <h3>Upload File</h3>
@@ -83,7 +109,7 @@ export default function Upload(){
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
         </>
     )
 }

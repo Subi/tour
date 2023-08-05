@@ -68,7 +68,22 @@
 .profileContainer {
     display: flex;
     align-items: center;
-    width: 30%
+    width: 30%;
+    margin-bottom: 18px;
+}
+
+.profileContainer span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.profileContainer img {
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
 }
 
 .discordButton {
@@ -101,3 +116,4 @@
     padding: 8px;
     font-size: 12px;
 }
+
