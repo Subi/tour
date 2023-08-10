@@ -8,8 +8,8 @@
 #header {
     display: flex;
     position: absolute;
-    left: 0;
-    padding: 20px 0 0 20px;
+    left: 115px;
+    padding: 25px 0 0 20px;
     align-items: center;
 }
 
@@ -35,7 +35,7 @@
 
 .uploadDialog {
     position: relative;
-    height: 325px;
+    height: 350px;
     width: 950px;
     display: flex;
 }
@@ -79,6 +79,12 @@
     justify-content: center;
 }
 
+.previewImageContainer {
+    position: relative;
+    height: 150px;
+    width: 150px;
+}
+
 .uploadActionHeader p:hover{
     color: rgb(251,211,20);
     cursor: pointer;
@@ -105,6 +111,27 @@
     outline: none;
     box-shadow: 0 4px #999;
 }
+
+.selectButton {
+    background-color: #242323;
+    border:none;
+    color: white;
+    padding: 8px;
+    font-family: var(--font-press-start);
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+    width: 100%;
+    outline: none;
+    box-shadow: 0 4px #999;
+}
+
+.selectButton:active {
+    background-color: #eb1c2c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
 
 .uploadButton:active {
     background-color: #eb1c2c;

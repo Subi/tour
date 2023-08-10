@@ -7,8 +7,6 @@ import gif from '../../../public/upload.gif'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { preview } from '@cloudinary/url-gen/actions/videoEdit';
-
 
 export default function Upload(){
     const {data: session} = useSession()
@@ -18,22 +16,22 @@ export default function Upload(){
     const [selectedState , setSelectedState] = useState('')
     const [uploadedFile , setUploadedFile] = useState<Blob>()
     const [previewImage , setPreviewImage] = useState<string>("");
+    const [errorMessage , setErrorMessage] = useState<string>("");
 
 
 
     const uploadFile = async ():  Promise<void> => {
-        if(!uploadedFile) return ;
-
+        if(!uploadedFile) return ;  
         if(uploadedFile.type != "image/jpeg") {
-                alert("File type is not supported")
+                setErrorMessage("File type is not supported")
                 return
         }
         if(!session) {
-            alert("Please sign in to upload a photo")
+            setErrorMessage("Please sign in to upload a photo")
             return
         }
         if(selectedState === "") {
-            alert("Please select a state before uploading a photo")
+            setErrorMessage("Please select a state before uploading a photo")
             return
         }
         const form : FormData =  new FormData();
@@ -87,11 +85,14 @@ export default function Upload(){
                 <Image className={styles.exitButton} src={ExitButton} alt='exit button' width={48} height={40} onClick={() => {router.push('/')}}/>
                 <div className={styles.uploadActionContainer}>
                     <div className={styles.uploadActionHeader}>
-                        <p onClick={() => {openFile()}}>Upload a Patch</p>
+                        <button className={styles.selectButton} onClick={() => {openFile()}}>
+                            Choose a photo
+                        </button>
                     </div>
-                    <div>
-                        {!previewImage ? "" :  <Image alt='preview image' src={previewImage} width={100} height={100}/> }
+                    <div className={styles.previewImageContainer}>
+                        {!previewImage ? "" :  <Image alt='preview image' src={previewImage} fill={true}/> }
                     </div>
+                    <span style={{color: "red"}}>{errorMessage} </span>
                     <input type='file' id='file_upload' accept="image/*" hidden={true} onChange={(e) => {uploadFileHandler(e.target)}}/>
                     <div className={styles.actionButtonsContainer}>
                     <select name='states'className={styles.stateDropdown} onChange={(e) => {setSelectedState(e.target.value)}}>
