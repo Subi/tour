@@ -1,16 +1,13 @@
 'use client';
-import Header from '../components/header';
 import styles from './upload.module.css';
-
 import Image from 'next/image';
 import ExitButton from '../../../public/exit_button.png'
-import Folder from '../../../public/folder.svg'
-import Earth from '../../../public/earth.png';
 import Logo from '../../../public/carlsjr.png'
 import gif from '../../../public/upload.gif'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { preview } from '@cloudinary/url-gen/actions/videoEdit';
 
 
 export default function Upload(){
@@ -20,11 +17,17 @@ export default function Upload(){
 
     const [selectedState , setSelectedState] = useState('')
     const [uploadedFile , setUploadedFile] = useState<Blob>()
+    const [previewImage , setPreviewImage] = useState<string>("");
 
 
 
     const uploadFile = async ():  Promise<void> => {
         if(!uploadedFile) return ;
+
+        if(uploadedFile.type != "image/jpeg") {
+                alert("File type is not supported")
+                return
+        }
         if(!session) {
             alert("Please sign in to upload a photo")
             return
@@ -56,9 +59,12 @@ export default function Upload(){
 
     const uploadFileHandler = (target:EventTarget & HTMLInputElement) => {
         const blob =  target.files?.[0] as Blob
+        const urlObj = URL.createObjectURL(blob)
         setUploadedFile(blob)
-        // setPreviewFile(URL.createObjectURL(blob))  //
+        setPreviewImage(urlObj)
+        
     }
+
 
     return (
         <>
@@ -83,7 +89,10 @@ export default function Upload(){
                     <div className={styles.uploadActionHeader}>
                         <p onClick={() => {openFile()}}>Upload a Patch</p>
                     </div>
-                    <input type='file' id='file_upload' hidden={true} onChange={(e) => {uploadFileHandler(e.target)}}/>
+                    <div>
+                        {!previewImage ? "" :  <Image alt='preview image' src={previewImage} width={100} height={100}/> }
+                    </div>
+                    <input type='file' id='file_upload' accept="image/*" hidden={true} onChange={(e) => {uploadFileHandler(e.target)}}/>
                     <div className={styles.actionButtonsContainer}>
                     <select name='states'className={styles.stateDropdown} onChange={(e) => {setSelectedState(e.target.value)}}>
                     <option>Select a state</option>
