@@ -83,6 +83,7 @@ export default function Dashboard() {
                            </div>
                            </div>
                            <div className={classes.photoCardInfoContainer}>
+                               <p>{patch.state}</p>
                                <p>{patch.Author.username}</p>
                                <div className={classes.controlsContainer}>
                                    <Image alt="accept" src={accept} width={25} height={25} onClick={() => {updatePatchData(patch)}}/>

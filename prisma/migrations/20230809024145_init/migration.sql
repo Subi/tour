@@ -16,6 +16,7 @@ CREATE TABLE "Author" (
     "username" TEXT,
     "email" TEXT,
     "isBanned" BOOLEAN NOT NULL,
+    "AvatarUrl" TEXT,
 
     CONSTRAINT "Author_pkey" PRIMARY KEY ("id")
 );

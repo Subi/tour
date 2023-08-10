@@ -20,8 +20,8 @@ export default function Header(props: IProfileProps){
             <div className={styles.headerRight}>
                 <nav className={styles.headerNav}>
                     <Link href={"/gallery"} className={styles.myLink}>Gallery</Link>
-                    <Link href={"/about"}  className={styles.myLink}>About</Link>
                     <Link href={"/upload"} className={styles.myLink}>Upload</Link>
+                    <Link href={"/about"}  className={styles.myLink}>About</Link>
                 </nav>
             <div className={styles.profileContainer}>
                 <Profile {...props}/>

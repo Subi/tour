@@ -3,6 +3,7 @@ import styles from './patches.module.css'
 import Image  from 'next/image'
 import patchlogo from '../../../public/patch-removebg.png'
 import questionMarkLogo from '../../../public/question_mark.png'
+import testIcon from '../../../public/test_icon.png'
 import { useEffect, useState } from 'react';
 import { Patch } from '../api/upload/route';
 // Test build out patch card 
@@ -24,9 +25,11 @@ export default function videoReel() {
     const [patches , setPatches] =  useState<Patch[] >([])
     
     const loadAvailablePatches = async ():Promise<void> => {
-        const data =  await fetchPatchData()
+        const data:Patch[] =  await fetchPatchData()
+        const filteredPatchData = data.filter(patch => patch.isApproved)
+        console.log(filteredPatchData)
         for(let i = 0; i < patchesArr.length; i++) {
-            patchesArr[i] = data[i]
+            patchesArr[i] = filteredPatchData[i]
         }
         setPatches(patchesArr)
     }
@@ -35,7 +38,6 @@ export default function videoReel() {
     useEffect(() => {
         loadAvailablePatches()
     } , [])
-
 
     return (
         <section id={styles.patchCardContainer}>
@@ -54,9 +56,15 @@ export default function videoReel() {
                             <div className={styles.cardHeader}>
                                 <p>{index + 1 < 10 ? `0${index + 1}` : index}</p>
                             </div>
-                                <Image src={patchlogo} alt='patch' width={185} height={230} />
+                                <Image src={patch.imageUrl as string} alt='patch' width={200} height={210} />
                         </div>
                         <div className={styles.profileCardBack}>
+                            <div className={styles.cardBackAvatarContainer}>
+                                <img src={patch.Author.avatarUrl}/>
+                            </div>
+                            <div className={styles.cardBackUsername}>
+                                <p>{patch.Author.username}</p>
+                            </div>
                         </div>
                     </div>
 

@@ -7,9 +7,15 @@ const nextConfig = {
                 hostname:  "res.cloudinary.com",
                 port: '',
                 pathname: '/dashboard/**'
+            },
+            {
+                protocol: 'http',
+                hostname:  "cdn.discordapp.com",
+                port: '',
+                pathname: '/dashboard/**'
             }
         ],
-        domains: ["res.cloudinary.com"]
+        domains: ["res.cloudinary.com" , "cdn.discordapp.com"]
     }
 }
 

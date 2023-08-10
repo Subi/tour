@@ -6,9 +6,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export async function GET(req:NextApiRequest, res:NextApiResponse) {
     const data =  await prisma.patch.findMany({
+        orderBy : {
+            state: 'asc'
+        },
         include: {
             Author: true
         }
     })
     return NextResponse.json(data)
 }
+

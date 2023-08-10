@@ -26,6 +26,7 @@ model Author {
   email    String?
   Patch    Patch[]
   isBanned Boolean
+  avatarUrl String?
 }
 
 // Add Author model and relations to Patch table
