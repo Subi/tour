@@ -1,0 +1,27 @@
+
+#aboutContainer {
+    width: 60%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#aboutContainer h1 {
+    padding-bottom: 45px;
+    font-family: var(--font-press-start);
+}
+
+#aboutContainer p {
+    font-size: 16px;
+    font-family: var(--font-montserrat);
+    letter-spacing: .20px;
+    line-height: 33px;
+    padding: 40PX;
+}
+
+.player {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

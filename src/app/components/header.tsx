@@ -3,6 +3,7 @@ import styles from './header.module.css'
 import Image from 'next/image'
 import Logo from '../../../public/carlsjr.png'
 import Profile, { IProfileProps } from './profile'
+import { signOut } from 'next-auth/react'
 
 
 export default function Header(props: IProfileProps){

@@ -1,6 +1,6 @@
 "use client"
-import { signIn } from 'next-auth/react'
-import classes from './header.module.css'
+import { signIn, signOut } from 'next-auth/react'
+import styles from './header.module.css'
 
 
 export interface IProfileProps {
@@ -15,17 +15,18 @@ export interface IProfileProps {
 export default function Profile({user}: IProfileProps) {
     if(!user) {
         return (
-            <button onClick={() => signIn("discord")} className={classes.discordButton}>
+            <button onClick={() => signIn("discord")} className={styles.discordButton}>
                     <i></i>
                     Login
              </button>
         )
     }
     return (
-        <span>
+        <div className={styles.profile}>
                     {user.name}
-                    <img src={user.image as string}/>
-        </span>
+                    <img className={styles.profileImg}src={user.image as string}/>
+                    <span className={styles.signOut} onClick={() => {signOut()}}>Logout</span>
+        </div>
+        
     )
-
 }

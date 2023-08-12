@@ -95,7 +95,19 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin: 30px 0 45px;
+    margin: 30px 0 25px;
+}
+
+.uploadDialog span {
+    font-size: 10px;
+    letter-spacing: .2px;
+    color: #eb1c2c;
+    font-family: var(--font-press-start);
+}
+
+.uploadDialog span:hover {
+    color: #fff;
+    cursor: pointer;
 }
 
 .uploadButton {

@@ -7,6 +7,7 @@ import gif from '../../../public/upload.gif'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link'
 
 export default function Upload(){
     const {data: session} = useSession()
@@ -103,6 +104,7 @@ export default function Upload(){
                     </select>
                         <button className={styles.uploadButton} onClick={() => uploadFile()}>Upload</button>
                     </div>
+                    <span><Link href={"/how-to-upload"} className={styles.myLink}>Upload Guide</Link></span>
                 </div>
             </div>
         </div>

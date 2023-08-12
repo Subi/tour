@@ -1,4 +1,5 @@
 import './globals.css'
+
 import type { Metadata } from 'next'
 import { Inter,  Press_Start_2P , Montserrat } from 'next/font/google'
 import { NextAuthProvider } from './providers'
