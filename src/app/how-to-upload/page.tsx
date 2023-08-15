@@ -1,3 +1,4 @@
+"use client"
 import '../globals.css'
 import styles from './how-to.module.css'
 import Image from 'next/image'
@@ -6,25 +7,23 @@ import Logo from '../../../public/carlsjr.png'
 import correctExample1 from '../../../public/patch.jpeg';
 import convertedExample1 from '../../../public/patch-removebg.png';
 import { getServerSession } from 'next-auth';
+import Header from '../components/header'
+import Sidebar from '../components/sidebar'
+import { useState } from 'react'
+import { SessionContextValue, useSession } from 'next-auth/react'
 
+export default function Guide(){
+    const  {data: session , status}:SessionContextValue = useSession()
+    const [isClosed , setisClosed] = useState<boolean>(true)
 
-export default async function Guide(){
     return (
-    <div id={styles.wrapper}>
-        <Link href={"/"}>
-        <div id={styles.header}>
-            <div id={styles.headerLogo}>
-                <Image src={Logo} width={75} height={75} alt='Header Logo'/>
-            </div>
-            <div id={styles.headerName}>
-                <h4>50 STATES TOUR</h4>
-                </div>
-        </div>
-        </Link>
-            <div className={styles.titleContainer}>
+        <>
+         <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
+        <Header isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
+        <div className={styles.titleContainer}>
                 <h1>Upload Standard Guide</h1>
             </div>
-                 <section className={styles.photoExamplesContainer}>
+            <section className={styles.photoExamplesContainer}>
                 <section className={styles.exampleRowOne}>
                 <Image src={correctExample1} alt='correct example' height={250} width={275}/>
                 {/* <Image src={arrow} alt='arrow'/> */}
@@ -48,6 +47,7 @@ export default async function Guide(){
                     </li>
                 </ul>
             </div>
-        </div>
+        </>
+            
     )
 }
