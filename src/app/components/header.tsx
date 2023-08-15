@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Logo from '../../../public/carlsjr.png'
 import HamburgerMenu from '../../../public/hamburger_menu.png';
 import Profile, { IProfileProps } from './profile'
-import { IButtonProps } from './sidebar.'
+import { IButtonProps } from './sidebar'
 import { useState } from 'react'
 
 

@@ -103,9 +103,22 @@
     letter-spacing: .1em;;
 }
 
+.error {
+    font-weight: bold;
+    color: red;
+}
 
+.success {
+    font-weight: bold;
+    color: green;
+}
 
-
+.info {
+    margin: 0 auto;
+    width: 65%;
+    justify-content: space-between;
+    display: flex;
+}
 
 @media only screen and (max-width: 600px) {
     #uploadContainer {
@@ -127,7 +140,14 @@
         border: 2px dashed whitesmoke;
     }
 
-
+    .info span:first {
+        font-style: italic;
+        text-align: left;
+        text-decoration: underline;
+    }
+    .info span:last-child {
+        text-align: right;
+    }
 }
 
 

@@ -4,7 +4,7 @@ import LandingPage from './components/landingPage'
 import Patches from './components/patches'
 import { Session, SessionOptions, getServerSession } from 'next-auth'
 import { IProfileProps } from './components/profile'
-import Sidebar from './components/sidebar.'
+import Sidebar from './components/sidebar'
 import { useEffect, useState } from 'react'
 import { SessionContextValue, useSession } from 'next-auth/react'
 
@@ -17,7 +17,7 @@ export default function Home() {
     <>
     {/* <LandingPage/> */}
       <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
-      <Header {...session} isClosed={isClosed} setIsClosed={setisClosed}/>
+      <Header  isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
       <Patches/>
     </>
   )

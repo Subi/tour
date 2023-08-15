@@ -1,7 +1,7 @@
 'use client';
 import styles from './upload.module.css';
 import Header from '../components/header';
-import Sidebar from '../components/sidebar.';
+import Sidebar from '../components/sidebar';
 import Image from 'next/image';
 import ExitButton from '../../../public/exit_button.png'
 import Logo from '../../../public/carlsjr.png'
@@ -75,13 +75,16 @@ export default function Upload(){
 
     return (
         <>
-         <Sidebar isClosed={isClosed} setIsClosed={setIsClosed}/>
-         <Header {...session} isClosed={isClosed} setIsClosed={setIsClosed}/>
+         <Sidebar isClosed={isClosed} setIsClosed={setIsClosed} session={session}/>
+         <Header {...session} isClosed={isClosed} setIsClosed={setIsClosed} session={session}/>
             <section id={styles.uploadContainer}>
                 <div className={styles.uploadPreview}>
                 {!previewImage ? "" :  <Image alt='preview image' src={previewImage} fill={true}/> }
                 </div>
-                <span style={{color: "red"}}>{errorMessage != "" ? errorMessage : successMessage}</span>
+                <div className={styles.info}>
+                <span onClick={() => {router.push("/how-to-upload")}}>upload guide</span>
+                <span className={errorMessage != "" ? `${styles.error}` : `${styles.success}`}>{errorMessage != "" ? errorMessage : successMessage}</span>
+                </div>
                 <div className={styles.actionButtonContainer}>
                 <button className={styles.selectButton} onClick={() => {openFile()}}>
                             Choose a photo

@@ -6,16 +6,18 @@ import Image from 'next/image'
 import ReactPlayer from 'react-player/youtube'
 import dynamic from 'next/dynamic'
 import Header from '../components/header'
-import Sidebar from '../components/sidebar.'
+import Sidebar from '../components/sidebar'
+import { SessionContextValue, useSession } from 'next-auth/react'
 
 export default function About() {
+    const {data: session}:SessionContextValue = useSession()
     const [isClosed , setisClosed] = useState<boolean>(true)
     const ReactPlayer = dynamic(() => import('react-player/lazy') , {ssr: false})
     
     return (
         <>
-        <Sidebar isClosed={isClosed} setIsClosed={setisClosed}/>
-        <Header isClosed={isClosed} setIsClosed={setisClosed}/>
+        <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
+        <Header isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
         <div id={styles.aboutContainer}>
             <h1>About</h1>
             <section>
@@ -26,7 +28,7 @@ export default function About() {
                 </p>
                 <p>
                     I personally enjoyed my time at the <b>Tampa , FL</b> pop up and it was beautiful sight to see everyone come together and just share similar interest and even different ones.
-                    I think asspizza shares a great message about being yourself because you do that well and most of all to <b style={{color: "red"}}>Follow your dreams.</b> 
+                    I think asspizza shares a great message about being yourself because you do that well and most of all... <b style={{color: "red"}}>Follow your dreams.</b> 
                     <Image src={star} alt='star' width={25} height={25}/>
                 </p>
             </section>

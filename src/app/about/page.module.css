@@ -25,3 +25,20 @@
     display: flex;
     justify-content: center;
 }
+
+
+@media only screen and (max-width: 600px) {
+    #aboutContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    #aboutContainer p {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .player {
+        margin-top: 20px;
+    }
+}

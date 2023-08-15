@@ -29,7 +29,12 @@
 }
 
 #sidebarContent span {
-    padding: .8em 0 0 1.4em;
+    padding: .8em 0 .7em 1.4em;
+}
+
+#sidebarContent span:first-child {
+    margin-bottom: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, .7);
 }
 
 #sidebar ul {
