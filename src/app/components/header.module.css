@@ -4,28 +4,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 20px;
+    margin-top: 1.5em;
 }
-
 
 
 #headerName {
     font-family: var(--font-press-start);
     font-size: 1em;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 
 #headerLogo {
     display: flex;
     align-items: center;
-    width: 8%;
+    width: 20%;
     justify-content: center;
 }
 
 .headerLeft {
     display: flex;
     justify-content: space-between;
+    margin-left: .4em;
 }
 
 .headerRight {
@@ -35,12 +36,15 @@
     align-items: center;
 }
 
+.mobileMenuIcon {
+    display: none;
+}
+
 .headerNav {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-press-start);
     font-weight: 500;
-    font-size: 1em;
-    width: 40%;
-    margin-bottom: 10px;
+    font-size: .7em;
+    width: 50%;
     display: flex;
     justify-content: space-between;
 }
@@ -68,7 +72,7 @@
     display: flex;
     align-items: center;
     width: 50%;
-    margin-bottom: .8em;
+    margin-bottom: .5em;
 }
 
 .profileContainer .discordButton {
@@ -179,10 +183,11 @@
         width: 30%;
     }
     .headerNav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+        display: none;
+    }
+    
+    .mobileMenuIcon {
+        display: block;
     }
     
     .menu {
@@ -225,14 +230,6 @@
     }
 
 
-    .burgerMenu {
-        height: 100%;
-        width: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
 
     .burgerBar {
         height: .1rem;

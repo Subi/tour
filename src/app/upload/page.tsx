@@ -3,14 +3,10 @@ import styles from './upload.module.css';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import Image from 'next/image';
-import ExitButton from '../../../public/exit_button.png'
-import Logo from '../../../public/carlsjr.png'
-import gif from '../../../public/upload.gif'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'
-import { Session } from 'next-auth';
+
 
 export default function Upload(){
     const {data: session} = useSession()
@@ -22,7 +18,7 @@ export default function Upload(){
     const [previewImage , setPreviewImage] = useState<string>("");
     const [errorMessage , setErrorMessage] = useState<string>("");
     const [successMessage , setSuccessMessage] = useState<string>("");
-    const [isClosed , setIsClosed] = useState<boolean>(false)
+    const [isClosed , setIsClosed] = useState<boolean>(true)
     
 
 

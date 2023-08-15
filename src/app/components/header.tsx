@@ -9,7 +9,7 @@ import { IButtonProps } from './sidebar'
 import { useState } from 'react'
 
 
-export default function Header({isClosed , setIsClosed}: IButtonProps  ){
+export default function Header({isClosed , setIsClosed , session}: IButtonProps  ){
 
 
     return (
@@ -29,22 +29,14 @@ export default function Header({isClosed , setIsClosed}: IButtonProps  ){
                 <div className={styles.mobileMenuIcon}>
                     <Image onClick={() => setIsClosed(false)} alt='mobileMenu' src={HamburgerMenu} width={28} height={28}/>
                 </div>
-            {/* <div className={styles.profileContainer}>
-                <Profile {...props}/>
-            </div>
-                <nav>
-                    <div className={styles.burgerMenu}> 
-                        <div className={burger_class} onClick={updateMenu}></div>
-                        <div className={burger_class} onClick={updateMenu}></div>
-                        <div className={burger_class} onClick={updateMenu}></div>
-                    </div>
-                </nav>
-                <div className={menu_class}></div> */}
-                {/* <nav className={styles.headerNav}>
+                <nav className={styles.headerNav}>
                     <Link href={"/gallery"} className={styles.myLink}>Gallery</Link>
                     <Link href={"/upload"} className={styles.myLink}>Upload</Link>
                     <Link href={"/about"}  className={styles.myLink}>About</Link>
-                </nav> */}
+                </nav>
+                <div className={styles.profileContainer}>
+                <Profile {...session}/>
+            </div>
             </div>
         </div>
         </>
