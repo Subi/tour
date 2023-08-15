@@ -1,9 +1,8 @@
 #wrapper {
     width: 100%;
     height: 100vh;
-    background-color: #272a33;
+    background-color: #fff; 
 }
-
 
 #header {
     display: flex;
@@ -22,8 +21,117 @@
     letter-spacing: 1.5px;
 }
 
+.selectButton {
+    background-color: #242323;
+    border:none;
+    color: white;
+    padding: 8px;
+    font-family: var(--font-press-start);
+    font-size: .5em;
+    font-weight: 300;
+    border-radius: 3px;
+    width: 18em;
+    outline: none;
+    box-shadow: 0 4px #999;
+    text-align: center;
+}
 
-#overlay {
+.selectButton:active {
+    background-color: #eb1c2c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.actionButtonContainer {
+    padding: 2em 0 1.8em 0 ;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stateDropdown {
+    background-color: #000;
+    color: white;
+    font-family: var(--font-press-start);
+    font-size: 8px;
+    border-radius: 3px;
+    border:none;
+    border-radius: 3px;
+    box-shadow: 0 2px #999;
+    padding-left: 1px;
+    width: 18em;
+}
+
+.stateDropdown option {
+    color: #fff;
+    text-align: center;
+}
+
+.stateDropdown:focus {
+    outline: 0;
+}
+
+.uploadButton {
+    background-color: #242323;
+    border:none;
+    color: white;
+    padding: 8px;
+    font-family: var(--font-press-start);
+    font-size: .5em;
+    font-weight: 300;
+    border-radius: 3px;
+    width: 18em;;
+    outline: none;
+    box-shadow: 0 4px #999;
+}
+
+
+.uploadButton:active {
+    background-color: #eb1c2c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+#uploadContainer span {
+    padding-top: 1em;
+    font-family: var(--font-montserrat);
+    font-size: .7em;
+    position: relative;
+    width: 70%;
+    line-height: 1.5em;
+    letter-spacing: .1em;;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    #uploadContainer {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2.5em;
+    }
+
+    .uploadPreview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 70%;
+        height: 250px;
+        border: 2px dashed whitesmoke;
+    }
+
+
+}
+
+
+/* #overlay {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -31,9 +139,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.uploadDialog {
+/* .uploadDialog {
     position: relative;
     height: 350px;
     width: 950px;
@@ -110,68 +218,6 @@
     cursor: pointer;
 }
 
-.uploadButton {
-    background-color: #242323;
-    border:none;
-    color: white;
-    padding: 8px;
-    font-family: var(--font-press-start);
-    font-size: 14px;
-    font-weight: 300;
-    border-radius: 3px;
-    width: 22%;
-    outline: none;
-    box-shadow: 0 4px #999;
-}
-
-.selectButton {
-    background-color: #242323;
-    border:none;
-    color: white;
-    padding: 8px;
-    font-family: var(--font-press-start);
-    font-size: 14px;
-    font-weight: 300;
-    border-radius: 3px;
-    width: 100%;
-    outline: none;
-    box-shadow: 0 4px #999;
-}
-
-.selectButton:active {
-    background-color: #eb1c2c;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
-
-.uploadButton:active {
-    background-color: #eb1c2c;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
-
-
-.stateDropdown {
-    background-color: #3c424b;
-    color: white;
-    font-family: var(--font-press-start);
-    font-size: 12px;
-    border-radius: 3px;
-    border:none;
-    border-radius: 3px;
-    box-shadow: 0 2px #999;
-    padding: 0 5px;
-}
-
-.stateDropdown option {
-    color: #fff;
-}
-
-.stateDropdown:focus {
-    outline: 0;
-}
 
 
 .exitButton {
@@ -180,7 +226,7 @@
     top: -13px;
 }
 
-
+ */
 
 /* .uploadContainer {
     width: 100%;

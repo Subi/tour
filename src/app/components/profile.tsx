@@ -1,6 +1,9 @@
 "use client"
 import { signIn, signOut } from 'next-auth/react'
 import styles from './header.module.css'
+import Image from 'next/image'
+import discordButtonLogo from '../../../public/black_logo.jpg'
+import { sign } from 'crypto'
 
 
 export interface IProfileProps {
@@ -15,10 +18,13 @@ export interface IProfileProps {
 export default function Profile({user}: IProfileProps) {
     if(!user) {
         return (
-            <button onClick={() => signIn("discord")} className={styles.discordButton}>
+            <>
+              {/* <button onClick={() => signIn("discord")} className={styles.discordButton}>
                     <i></i>
                     Login
-             </button>
+             </button> */}
+             <Image alt='login button' onClick={() => {signIn("discord")}} src={discordButtonLogo} className={styles.discordLogoSign} height={20} width={20}/>
+            </>
         )
     }
     return (

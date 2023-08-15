@@ -1,16 +1,21 @@
 "use client"
 import styles from './page.module.css'
+import { useState } from 'react'
 import star from '../../../public/star.png'
 import Image from 'next/image'
 import ReactPlayer from 'react-player/youtube'
 import dynamic from 'next/dynamic'
 import Header from '../components/header'
+import Sidebar from '../components/sidebar.'
 
 export default function About() {
+    const [isClosed , setisClosed] = useState<boolean>(true)
     const ReactPlayer = dynamic(() => import('react-player/lazy') , {ssr: false})
+    
     return (
         <>
-        <Header/>
+        <Sidebar isClosed={isClosed} setIsClosed={setisClosed}/>
+        <Header isClosed={isClosed} setIsClosed={setisClosed}/>
         <div id={styles.aboutContainer}>
             <h1>About</h1>
             <section>
