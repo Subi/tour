@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from  './landingPage.module.css'
 
 
@@ -7,6 +7,21 @@ import styles from  './landingPage.module.css'
 
 export default function LandingPage(){
     const [isVisable , setIsVisable] = useState<boolean>(true)
+
+
+    useEffect(() => {
+        if(hasEntered()) {
+            setIsVisable(false)
+            localStorage.setItem("entered" , JSON.stringify(true))
+        } else {
+            localStorage.setItem("entered" , JSON.stringify(false))
+        }
+    }, [])
+ 
+    const hasEntered = () => {
+        const storedValue: string = window.localStorage.getItem("entered") as string
+        return storedValue ? true : false
+    }
 
     return (
     <main id={isVisable ? `${styles.mainWrapper}` : `${styles.hidden}`} >
