@@ -20,7 +20,6 @@ export default function LandingPage(){
  
     const hasEntered = () => {
         const storedValue: string = window.localStorage.getItem("entered") as string
-        console.log(storedValue)
         return storedValue ? true : false
     }
 
