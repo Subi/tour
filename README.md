@@ -5,7 +5,7 @@
 
 - [x] Change out Typography.
 
-- [] Update Nav bar.
+- [x] Update Nav bar.
 
 
 ## To-do List
@@ -39,12 +39,12 @@
 
 - [x] Display preview of uploaded photo before submission
 
-- [] Do some testing on optimal photo resolution. 
+- [x] Do some testing on optimal photo resolution. 
 
 - [x] Build out dashboard to approve/decline submitted photos. 
 
 - [x] Create password page to protect dashboard
 
-- [] Update Design * ~~ weekend task ~~ Sunday* 🥵️ 
+- [x] Update Design * ~~ weekend task ~~  ~~Sunday ~~  took way longer 🥵️ 
 
 - [x] Fix database logic , need to check if author exist first should not be creating new author if they exist no sir  🙅‍♀️️

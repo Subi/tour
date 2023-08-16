@@ -4,12 +4,12 @@ import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useSession } from 'next-auth/react';
+import { SessionContextValue, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 
 export default function Upload(){
-    const {data: session} = useSession()
+    const {data: session}:SessionContextValue = useSession()
     const router = useRouter()
 
 
@@ -53,7 +53,60 @@ export default function Upload(){
         })
     } 
 
-    const states:string[] = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+    const states:string[] = [ // move this to another file 
+        'Alabama',
+        'Alaska',
+        'Arizona',
+        'Arkansas',
+        'California',
+        'Colorado',
+        'Connecticut',
+        'Delaware',
+        'Florida',
+        'Georgia',
+        'Hawaii',
+        'Idaho',
+        'Illinois',
+        'Indiana',
+        'Iowa',
+        'Kansas',
+        'Kentucky',
+        'Louisiana',
+        'Maine',
+        'Maryland',
+        'Massachusetts',
+        'Michigan',
+        'Minnesota',
+        'Mississippi',
+        'Missouri',
+        'Montana',
+        'Nebraska',
+        'Nevada',
+        'New Hampshire',
+        'New Jersey',
+        'New Mexico',
+        'New York',
+        'North Carolina',
+        'North Dakota',
+        'Ohio',
+        'Oklahoma',
+        'Oregon',
+        'Pennsylvania',
+        'Rhode Island',
+        'South Carolina',
+        'South Dakota',
+        'Tennessee',
+        'Texas',
+        'Utah',
+        'Vermont',
+        'Virginia',
+        'Washington',
+        'West Virginia',
+        'Wisconsin',
+        'Wyoming'
+    ]
+
+
 
     const openFile = ():void => {
         document.getElementById('file_upload')?.click()

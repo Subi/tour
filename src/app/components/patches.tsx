@@ -1,9 +1,7 @@
 "use client";
-import styles from './patches.module.css'
-import Image  from 'next/image'
-import patchlogo from '../../../public/patch-removebg.png'
-import questionMarkLogo from '../../../public/question_mark.png'
-import testIcon from '../../../public/test_icon.png'
+import styles from './patches.module.css';
+import Image  from 'next/image';
+import questionMarkLogo from '../../../public/question_mark.png';
 import { useEffect, useState } from 'react';
 import { Patch } from '../api/upload/route';
 // Test build out patch card 
@@ -20,14 +18,13 @@ async function fetchPatchData():Promise<any> {
 }
 
 
-export default function videoReel() {
+export default function Patches() {
     const patchesArr = new Array(50).fill({})
     const [patches , setPatches] =  useState<Patch[] >([])
     
     const loadAvailablePatches = async ():Promise<void> => {
         const data:Patch[] =  await fetchPatchData()
         const filteredPatchData = data.filter(patch => patch.isApproved)
-        console.log(filteredPatchData)
         for(let i = 0; i < patchesArr.length; i++) {
             patchesArr[i] = filteredPatchData[i]
         }

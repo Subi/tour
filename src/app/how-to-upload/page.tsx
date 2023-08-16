@@ -2,11 +2,8 @@
 import '../globals.css'
 import styles from './how-to.module.css'
 import Image from 'next/image'
-import Link from 'next/link'
-import Logo from '../../../public/carlsjr.png'
 import correctExample1 from '../../../public/patch.jpeg';
 import convertedExample1 from '../../../public/patch-removebg.png';
-import { getServerSession } from 'next-auth';
 import Header from '../components/header'
 import Sidebar from '../components/sidebar'
 import { useState } from 'react'
@@ -18,7 +15,7 @@ export default function Guide(){
 
     return (
         <>
-         <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
+        <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
         <Header isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
         <div className={styles.titleContainer}>
                 <h1>Upload Standard Guide</h1>
