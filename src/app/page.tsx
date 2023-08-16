@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-    {/* <LandingPage/> */}
+    <LandingPage/>
       <Sidebar isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
       <Header  isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
       <Patches/>

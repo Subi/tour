@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { SessionContextValue, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Session } from 'inspector';
 import { Author } from '@prisma/client';
 
 
@@ -44,6 +43,7 @@ const fetchUserData = async (username:string):Promise<Author> => {
         const user = await fetchUserData(username)
         return user.isBanned ? true : false
     }   
+
 
     const uploadFile = async ():  Promise<void> => {
         if(!uploadedFile) return ;
