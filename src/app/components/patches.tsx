@@ -11,7 +11,7 @@ import { Patch } from '../api/upload/route';
 async function fetchPatchData():Promise<any> {
     const response =  await fetch('api/database/patches')
     if(!response.ok) {
-        console.error("Error fetching patch data:")
+        console.error("Error fetching patch data:" , response.statusText)
     }
 
     return response.json()

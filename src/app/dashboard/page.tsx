@@ -5,13 +5,13 @@ import Image from "next/image";
 import accept from '../../../public/icons8-check.svg';
 import decline from '../../../public/icons8-close-window-48.png';
 import { Patch } from "../api/upload/route";
-import { useSession } from "next-auth/react";
+import { SessionContextValue, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import {redirect} from 'next/navigation';
 
 
 async function updatePatchData(patch:Patch):Promise<void> {
-        const response =  await fetch('api/database/patches/update' , {
+    const response =  await fetch('api/database/patches/update' , {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +24,7 @@ async function updatePatchData(patch:Patch):Promise<void> {
 }
 
 async function deletePatchData(patch:Patch):Promise<void> {
-        const response =  await fetch('api/database/patches/delete' , {
+    const response =  await fetch('api/database/patches/delete' , {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -47,7 +47,9 @@ async function getPatchData() {
 
 
 export default function Dashboard() {
-    const {data: session , status} = useSession()
+    const {data: session , status}:SessionContextValue = useSession()
+    const [isClosed , setisClosed] = useState<boolean>(true)
+
     const [data , setData] = useState<Patch[]>([]);
 
     const getData = async () => {
@@ -69,7 +71,7 @@ export default function Dashboard() {
 
     return ( 
         <>
-           <Header {...session}/>
+           <Header isClosed={isClosed} setIsClosed={setisClosed} session={session}/>
            <div className={classes.dashboardHeader}>
                 <h2>Dashboard</h2>
            </div>

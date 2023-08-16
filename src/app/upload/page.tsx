@@ -6,9 +6,27 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { SessionContextValue, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { Session } from 'inspector';
+import { Author } from '@prisma/client';
 
 
-export default function Upload(){
+const fetchUserData = async (username:string):Promise<Author> => {
+    const response = await fetch('api/database/user' , {
+        method: "POST",
+        headers : {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "data":  {username}
+        })
+    })
+    if(!response.ok) {
+        console.error("Error fetching user data:" , response.statusText)
+    }
+    return await response.json()
+}
+
+ export default function Upload(){
     const {data: session}:SessionContextValue = useSession()
     const router = useRouter()
 
@@ -21,10 +39,18 @@ export default function Upload(){
     const [isClosed , setIsClosed] = useState<boolean>(true)
     
 
-
+    const isBanned = async():Promise<boolean> => {
+        const username =  session?.user?.name as string
+        const user = await fetchUserData(username)
+        return user.isBanned ? true : false
+    }   
 
     const uploadFile = async ():  Promise<void> => {
-        if(!uploadedFile) return ;  
+        if(!uploadedFile) return ;
+        if( await isBanned()) {
+            setErrorMessage("Permission denied")
+            return
+        }
         if(uploadedFile.type != "image/jpeg") {
                 setErrorMessage("File type is not supported")
                 return

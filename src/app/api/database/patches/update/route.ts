@@ -14,4 +14,5 @@ export async function POST(req:NextRequest, res:NextApiResponse) {
             isApproved: true
         }
     })
+    console.log(result)
 }
