@@ -41,13 +41,20 @@ const fetchUserData = async (username:string):Promise<Author> => {
     const isBanned = async():Promise<boolean> => {
         const username =  session?.user?.name as string
         const user = await fetchUserData(username)
-        return user.isBanned ? true : false
+        if(!user) {
+            return false
+        }
+        return user.isBanned
     }   
 
 
     const uploadFile = async ():  Promise<void> => {
         if(!uploadedFile) return ;
-        if( await isBanned()) {
+        if(!session) {
+            setErrorMessage("Please sign in to upload a photo")
+            return
+        }
+        if(await isBanned()) {
             setErrorMessage("Permission denied")
             return
         }
@@ -55,11 +62,7 @@ const fetchUserData = async (username:string):Promise<Author> => {
                 setErrorMessage("File type is not supported")
                 return
         }
-        if(!session) {
-            setErrorMessage("Please sign in to upload a photo")
-            return
-        }
-        if(selectedState === "") {
+        if(selectedState === "Select a state" || selectedState === "") {
             setErrorMessage("Please select a state before uploading a photo")
             return
         }
@@ -73,10 +76,10 @@ const fetchUserData = async (username:string):Promise<Author> => {
         form.append('file' , uploadedFile)
         form.append('state' , selectedState)
         
-        await fetch('api/upload' , {
-            method: "POST",
-            body: form,
-        })
+        // await fetch('api/upload' , {
+        //     method: "POST",
+        //     body: form,
+        // })
     } 
 
     const states:string[] = [ // move this to another file 
@@ -166,9 +169,10 @@ const fetchUserData = async (username:string):Promise<Author> => {
                 </button>
                 <input type='file' id='file_upload' accept="image/*" hidden={true} onChange={(e) => {uploadFileHandler(e.target)}}/>
                 <select name='states'className={styles.stateDropdown} onChange={(e) => {setSelectedState(e.target.value)}}>
-                    <option>Select a state</option>
+                    <option value={"selectCard"}>Select a state</option>
                     {states.map((state , i) => {
-                        return <option key={i}value={state}>{state}</option>
+                        
+                        return <option key={i} value={state}>{state}</option>
                     })}
                     </select>
                 </div>
