@@ -38,8 +38,6 @@ export async function POST(req: NextRequest, res:NextResponse) {
     const avatarUrl:FormDataEntryValue | null = form.get('avatar');
     const date = new Date()
 
-
-
     const patch:Patch = await createPatchData(state?.toString(), file, date.toLocaleDateString() , username?.toString() , email?.toString() , avatarUrl?.toString())
     if(patch) {
         const savedPatch:Patch = await savePatch(patch)
@@ -47,6 +45,8 @@ export async function POST(req: NextRequest, res:NextResponse) {
     } else {
         console.error("Error creating patch data from upload form.")
     }
+
+    return NextResponse.json({status: "200"})
 }
 
 

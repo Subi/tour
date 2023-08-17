@@ -75,6 +75,7 @@ const fetchUserData = async (username:string):Promise<Author> => {
         form.append('avatar' , session?.user?.image as string)
         form.append('file' , uploadedFile)
         form.append('state' , selectedState)
+
         
         await fetch('api/upload' , {
             method: "POST",
