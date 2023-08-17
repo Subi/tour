@@ -54,6 +54,7 @@ export default function Dashboard() {
 
     const getData = async () => {
         const patchData:Patch[] =  await getPatchData()
+        console.log(patchData)
         setData(patchData.filter(patch => patch.isApproved === null))
     }
 
