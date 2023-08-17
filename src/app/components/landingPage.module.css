@@ -31,7 +31,8 @@
    #mainWrapper {
     font-size: .7em;
     width: 100%;
-    height: 100vh
+    height: 100%;
+    background-color: #fff;
    }
 
    #mainWrapper p {
