@@ -8,5 +8,5 @@ import { NextApiRequest, NextApiResponse } from "next";
 export async function POST(req:NextRequest, res:NextApiResponse) {
     const {data} = await req.json()
     const result =  await prisma.patch.delete({where:{id: data.id}})
-    console.log(result)
+    return NextResponse.json({success:"200"})
 }
