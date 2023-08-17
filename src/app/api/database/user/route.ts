@@ -10,6 +10,5 @@ export async function POST(req:NextRequest , res:NextApiRequest) {
             username: data.username
         },
     })
-
     return NextResponse.json(results)
 }

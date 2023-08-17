@@ -1,11 +1,9 @@
-import { File } from "buffer";
 import { NextRequest, NextResponse } from "next/server";
-import {v2 as Cloudinary, UploadApiErrorResponse, UploadApiResponse, UploadStream} from 'cloudinary';
+import {v2 as Cloudinary,UploadStream} from 'cloudinary';
 import { Readable } from "stream";
 import {prisma } from "@/lib/prisma";
 import { handler } from "../discord/route";
-import path from "path";
-import { backgroundRemoval } from "@cloudinary/url-gen/actions/effect";
+
 
 let cloudinary = Cloudinary;
           
