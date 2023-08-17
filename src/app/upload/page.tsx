@@ -76,10 +76,10 @@ const fetchUserData = async (username:string):Promise<Author> => {
         form.append('file' , uploadedFile)
         form.append('state' , selectedState)
         
-        // await fetch('api/upload' , {
-        //     method: "POST",
-        //     body: form,
-        // })
+        await fetch('api/upload' , {
+            method: "POST",
+            body: form,
+        })
     } 
 
     const states:string[] = [ // move this to another file 
