@@ -41,7 +41,7 @@ export async function POST(req: NextRequest, res:NextResponse) {
     const patch:Patch = await createPatchData(state?.toString(), file, date.toLocaleDateString() , username?.toString() , email?.toString() , avatarUrl?.toString())
     if(patch) {
         const savedPatch:Patch = await savePatch(patch)
-        handler(savedPatch)
+        await handler(savedPatch)
     } else {
         console.error("Error creating patch data from upload form.")
     }
@@ -71,7 +71,7 @@ const generatePatchImageUrl = async (file: FormDataEntryValue | null):Promise<st
     const readable = await fileToBuffer(file)
     return new Promise<string | undefined>((resolve , reject) => {
         let uploadStream: UploadStream = cloudinary.uploader.upload_stream(
-            { folder: "dev" , background_removal: "cloudinary_ai",  transformation:[{width: 500 , height: 500 , gravity:"center" , crop: "fit"}]}
+            { folder: "dev" , transformation:[{width: 500 , height: 500 , gravity:"center" , crop: "fit"}]}
             ,(err , res) => {
             if(err) {
                 return reject(err)
